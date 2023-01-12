@@ -87,3 +87,6 @@ typings/
 
 # Electron-Forge
 out/
+
+# Visual Studio Code Config
+.vscode/

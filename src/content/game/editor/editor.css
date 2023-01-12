@@ -1,0 +1,179 @@
+
+.window
+{
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    left: 0;
+    top: 0;
+}
+
+.menu
+{
+    position: absolute;
+    width: 200px;
+    height: 600px;
+    left: 600px;
+    top: 0;
+
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+canvas
+{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#cv
+{
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    top: 25px;
+    left: 25px;
+}
+
+#mcv
+{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    left: 20px;
+    top: 20px;
+}
+
+#import
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 200px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#import:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#import:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#import_file
+{
+    display: none;
+}
+
+#export
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 260px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#export:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#export:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#play
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 320px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#play:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#play:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.hidden
+{
+    display: none;
+}
+
+.pageOverlay
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: #1225467e;
+}
+
+.windowBG
+{
+    position: absolute;
+    width: 525px;
+    height: 525px;
+    left: 38.5px;
+    top: 38.5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#menuCV
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 525px;
+    height: 525px;
+}
+
+#startPos
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    bottom: 20px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#startPos:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#startPos:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}

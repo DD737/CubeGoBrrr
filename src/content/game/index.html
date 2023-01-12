@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubeGoBrrr</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="window">
+
+        <canvas width="550" height="550" id="cv"></canvas>
+
+    </div>
+    <div class="menu">
+
+        <canvas width="160" height="160" id="mcv"></canvas>
+
+        <div id="import">IMPORT</div>
+        <input id="import_file" type="file">
+        
+        <div id="export">EXPORT</div>
+        
+        <div id="edit">EDIT</div>
+
+        <div id="keysWrapper">
+            <div id="keys"></div>
+        </div>
+
+    </div>
+
+    <script src="classes.js"></script>
+    <script src="minimap.js"></script>
+    <script src="game.js"></script>
+
+    <script>
+    {
+        if(sessionStorage.getItem('load') === 'true')
+        {
+            const lvl = sessionStorage.getItem('level');
+            if(lvl)
+                loadLevel(lvl);
+        }
+    }
+    {
+        const imp = document.getElementById('import');
+        /** @type {HTMLInputElement} */
+        const file = document.getElementById("import_file");
+        imp.onclick = () => file.click();
+
+        file.onchange = () => {
+            if(file.files.length > 0)
+            {
+                let reader = new FileReader();
+                reader.onload = ev => {
+                    loadLevel(ev.target.result);
+                }
+                reader.readAsText(file.files[0]);
+            }
+        }
+    }
+    {
+        const exp = document.getElementById('export');
+        exp.onclick = () => {
+            saveLevel();
+        }
+    }
+    {
+        const edit = document.getElementById('edit')
+        edit.onclick = () => {
+            try 
+            {
+                const obj = converter.zipLevel(globalData.clevel);
+                const str = JSON.stringify(obj);
+                sessionStorage.setItem('level', str);
+                location.href = 'editor/index.html'
+            }
+            catch (error) 
+            {
+                alert('Could not import level into editor, we are sorry :(');
+            }
+        }
+    }
+    </script>
+    
+</body>
+</html>

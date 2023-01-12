@@ -1,0 +1,35 @@
+{
+	"name": "cube-go-brrr",
+	"productName": "CubeGoBrrr",
+	"version": "1.0.0",
+	"description": "Stupid little game i made",
+	"main": "src/main.js",
+	"scripts": 
+	{
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"publish": "electron-forge publish",
+		"lint": "echo \"No linting configured\""
+	},
+	"keywords": [],
+	"author": 
+	{
+		"name": "DD737",
+		"email": "88337882+DD737@users.noreply.github.com"
+	},
+	"license": "MIT",
+	"dependencies": 
+	{
+		"electron-squirrel-startup": "^1.0.0"
+	},
+	"devDependencies": 
+	{
+		"@electron-forge/cli": "^6.0.4",
+		"@electron-forge/maker-deb": "^6.0.4",
+		"@electron-forge/maker-rpm": "^6.0.4",
+		"@electron-forge/maker-squirrel": "^6.0.4",
+		"@electron-forge/maker-zip": "^6.0.4",
+		"electron": "22.0.0"
+	}
+}

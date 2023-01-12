@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubeGoBrrr</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    
+    <div class="window">
+        <canvas width="550" height="550" id="cv"></canvas>
+    </div>
+    <div class="menu">
+
+        <canvas width="160" height="160" id="mcv"></canvas>
+
+        <div id="import">IMPORT</div>
+        <input id="import_file" type="file">
+        
+        <div id="export">EXPORT</div>
+
+        <div id="play">PLAY</div>
+
+        <div id="startPos">START POS</div>
+
+    </div>
+
+    <div id="menuWindow" class="pageOverlay hidden">
+        <div class="windowBG">
+            <canvas id="menuCV" width="525" height="525"></canvas>
+        </div>
+    </div>
+
+    <div id="portalSelectWindow" style="pointer-events: none;" class="pageOverlay hidden">
+
+        <style>
+
+            .portalSelectWindow_title
+            {
+                position: absolute;
+                top: 10px;
+                left: 50px;
+            }
+
+        </style>
+
+        <div id="portalSelectWindow_title1", class="portalSelectWindow_title hidden">Select room on minimap</div>
+        <div id="portalSelectWindow_title2", class="portalSelectWindow_title hidden">Select tile on field</div>
+
+    </div>
+
+    <div id="startPosSelectWindow" style="pointer-events: none;" class="pageOverlay hidden">
+
+        <style>
+
+            .startPosSelectWindow_title
+            {
+                position: absolute;
+                top: 10px;
+                left: 50px;
+            }
+
+        </style>
+
+        <div id="startPosSelectWindow_title1", class="startPosSelectWindow_title hidden">Select room on minimap</div>
+        <div id="startPosSelectWindow_title2", class="startPosSelectWindow_title hidden">Select tile on field</div>
+
+    </div>
+
+    <div id="idSelectWindow" class="pageOverlay hidden">
+
+        <div class="idSelectWindow_title"> Select ID for new 
+            <a id="idSelectWindow_title_key" class="hidden">key</a>
+            <a id="idSelectWindow_title_lock" class="hidden">lock</a>
+        </div>
+
+        <div id="idSelectWindow_id">0</div>
+        <button id="idSelectWindow_up">+</button>
+        <button id="idSelectWindow_down">-</button>
+        <button id="idSelectWindow_select">SELECT</button>
+
+        <style>
+
+            .idSelectWindow_title
+            {
+                position: absolute;
+                user-select: none;
+                left: 50px;
+                top: 10px;
+            }
+
+            #idSelectWindow_id
+            {
+                position: absolute;
+                user-select: none;
+                left: 100px;
+                top: 100px;
+                font-size: 40px;
+            }
+
+            #idSelectWindow_up
+            {
+                position: absolute;
+                top: 95px;
+                left: 150px;
+                width: 25px;
+                height: 25px;
+                border: none;
+                background: none;
+                outline: none;
+                user-select: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            #idSelectWindow_up:hover
+            {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            #idSelectWindow_up:active
+            {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+
+            #idSelectWindow_down
+            {
+                position: absolute;
+                top: 120px;
+                left: 150px;
+                width: 25px;
+                height: 25px;
+                border: none;
+                user-select: none;
+                background: none;
+                outline: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            #idSelectWindow_down:hover
+            {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            #idSelectWindow_down:active
+            {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+
+            #idSelectWindow_select
+            {
+                position: absolute;
+                top: 150px;
+                left: 100px;
+                width: 75px;
+                height: 25px;
+                border: none;
+                user-select: none;
+                background: none;
+                outline: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            #idSelectWindow_select:hover
+            {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            #idSelectWindow_select:active
+            {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+
+        </style>
+
+    </div>
+
+    <script src="../classes.js"></script>
+    <script src="minimap.js"></script>
+    <script src="game.js"></script>
+
+    <script>
+    {
+        sessionStorage.setItem('load', 'false');
+        const lvl = sessionStorage.getItem('level');
+        if(lvl)
+            loadLevel(lvl);
+    }
+    {
+        const imp = document.getElementById('import');
+        /** @type {HTMLInputElement} */
+        const file = document.getElementById("import_file");
+        imp.onclick = () => file.click();
+
+        file.onchange = () => {
+            if(file.files.length > 0)
+            {
+                let reader = new FileReader();
+                reader.onload = ev => {
+                    loadLevel(ev.target.result);
+                }
+                reader.readAsText(file.files[0]);
+            }
+        }
+    }
+    {
+        const exp = document.getElementById('export');
+        exp.onclick = () => {
+            saveLevel();
+        }
+    }
+    {
+        const play = document.getElementById('play');
+        play.onclick = () => {
+            try 
+            {
+                const obj = converter.zipLevel(globalData.clevel);
+                const str = JSON.stringify(obj);
+                sessionStorage.setItem('level', str);
+                sessionStorage.setItem('load', 'true');
+                location.href = "../index.html";
+            }
+            catch (error) 
+            {
+                alert('Could not import level into player, we are sorry :(');
+            }
+        }
+    }
+    {
+        const startPos = document.getElementById('startPos');
+        startPos.onclick = () => {
+
+            startPosSelectMode = 1;
+            document.getElementById('startPosSelectWindow').classList.remove('hidden');
+            document.getElementById('startPosSelectWindow_title1').classList.remove('hidden');
+
+        }
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+
+.window
+{
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    left: 0;
+    top: 0;
+}
+
+.menu
+{
+    position: absolute;
+    width: 200px;
+    height: 600px;
+    left: 600px;
+    top: 0;
+
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+canvas
+{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#cv
+{
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    top: 25px;
+    left: 25px;
+}
+
+#mcv
+{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    left: 20px;
+    top: 20px;
+}
+
+#import
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 200px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#import:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#import:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#import_file
+{
+    display: none;
+}
+
+#export
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 260px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#export:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#export:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#edit
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 20px;
+    top: 320px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
+}
+#edit:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#edit:active
+{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#keysWrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 160px;
+    height: 80px;
+    left: 20px;
+    bottom: 20px;
+    
+    background-color: rgba(255, 255, 255, 0.05);
+}
+#keys
+{
+    text-align: center;
+}
